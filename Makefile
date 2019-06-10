@@ -12,5 +12,5 @@ test:
 	cd bin ; java -classpath .:/usr/share/java/junit4.jar TestRunner
 
 clean:
-	rm bin/*.class
+	-rm bin/*.class
 
