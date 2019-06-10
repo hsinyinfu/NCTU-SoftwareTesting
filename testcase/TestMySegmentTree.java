@@ -15,6 +15,23 @@ public class TestMySegmentTree {
         assertArrayEquals( ans, tree );
     }
 
+    @Test
+    public void testBuildTree2() {
+        int[] data = { 1, 2 };
+        int[] ans = { 3, 1, 2 };
+        int[] tree = new int[3];
+        tree = MySegmentTree.buildTree( 0, 0, data.length-1, data, tree );
+        assertArrayEquals( ans, tree );
+    }
+
+    @Test
+    public void testBuildTree3() {
+        int[] data = { 1, 2, 3, 4 };
+        int[] ans = { 10, 3, 7, 1, 2, 3, 4 };
+        int[] tree = new int[7];
+        tree = MySegmentTree.buildTree( 0, 0, data.length-1, data, tree );
+        assertArrayEquals( ans, tree );
+    }
 
 }
 

@@ -13,10 +13,17 @@ public class MySegmentTree {
             tree[idx] = data[left];
             return tree;
         }
+
+        int leftInd = idx*2 + 1; 
+        int rightInd = idx*2 + 2;
+        int mid = left + (right - left)/2;
+        buildTree(leftInd, left, mid, data, tree);
+        buildTree(rightInd, mid + 1, right, data, tree);
+        tree[idx] = tree[ leftInd ] + tree[ rightInd ];
         return tree;
     }
     public static void main(String[] args) {
-        int[] data = { 1 };
+        int[] data = { 1, 2, 3, 4 };
         int[] tree = new int[ data.length*4 ];
         tree = buildTree( 0, 0, data.length-1, data, tree );
         System.out.print("Data: ");
