@@ -23,7 +23,6 @@ public class TestMySegmentTree {
         tree = MySegmentTree.buildTree( 0, 0, data.length-1, data, tree );
         assertArrayEquals( ans, tree );
     }
-
     @Test
     public void testBuildTree3() {
         int[] data = { 1, 2, 3, 4 };
@@ -31,6 +30,14 @@ public class TestMySegmentTree {
         int[] tree = new int[7];
         tree = MySegmentTree.buildTree( 0, 0, data.length-1, data, tree );
         assertArrayEquals( ans, tree );
+    }
+
+    @Test
+    public void testRangeSum1() {
+        int[] tree = { 1 };
+        int ans = 1 ;
+        int result = MySegmentTree.rangeSum( 0, 0, tree, 0, 0, tree.length-1 );
+        assertEquals( ans, result );
     }
 
 }

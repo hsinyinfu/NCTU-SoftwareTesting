@@ -22,6 +22,12 @@ public class MySegmentTree {
         tree[idx] = tree[ leftInd ] + tree[ rightInd ];
         return tree;
     }
+    public static int rangeSum( int start, int end, int[] tree, int treeIdx, int left, int right )
+    {
+        if( left == start && right == end )
+            return tree[ treeIdx ];
+        return 0;
+    }
     public static void main(String[] args) {
         int[] data = { 1, 2, 3, 4 };
         int[] tree = new int[ data.length*4 ];
@@ -31,5 +37,6 @@ public class MySegmentTree {
         System.out.print("\nTree: ");
         showArray( tree );
         System.out.print("\n");
+        System.out.println( rangeSum( 0, tree.length-1, tree, 0, 0, tree.length-1 ) );
     }
 }
