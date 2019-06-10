@@ -1,0 +1,14 @@
+language: java
+
+os:
+  - linux
+jdk:
+  - oraclejdk9
+addons:
+  apt:
+    packages:
+    - junit4
+script:
+  - make clean
+  - make all
+  - make test
