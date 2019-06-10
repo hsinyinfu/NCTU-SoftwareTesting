@@ -44,6 +44,8 @@ public class MySegmentTree {
             ans = rangeSum( start, end, tree, rightIdx, mid+1, right );
             return ans;
         }
+        ans = rangeSum( start, mid, tree, leftIdx, left, mid );
+        ans += rangeSum( mid+1, end, tree, rightIdx, mid+1, right );
         return ans;
     }
     public static void main(String[] args) {
@@ -57,7 +59,12 @@ public class MySegmentTree {
         System.out.print("\n");
         System.out.println( rangeSum( 0, 0, tree, 0, 0, data.length-1 ) );
         System.out.println( rangeSum( 0, 1, tree, 0, 0, data.length-1 ) );
+        System.out.println( rangeSum( 0, 2, tree, 0, 0, data.length-1 ) );
         System.out.println( rangeSum( 0, 3, tree, 0, 0, data.length-1 ) );
+        System.out.println( rangeSum( 1, 1, tree, 0, 0, data.length-1 ) );
+        System.out.println( rangeSum( 1, 2, tree, 0, 0, data.length-1 ) );
+        System.out.println( rangeSum( 1, 3, tree, 0, 0, data.length-1 ) );
+        System.out.println( rangeSum( 2, 2, tree, 0, 0, data.length-1 ) );
         System.out.println( rangeSum( 2, 3, tree, 0, 0, data.length-1 ) );
         System.out.println( rangeSum( 3, 3, tree, 0, 0, data.length-1 ) );
     }
