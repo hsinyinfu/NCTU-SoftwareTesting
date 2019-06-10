@@ -11,6 +11,9 @@ compileTest:
 test:
 	cd bin ; java -classpath .:/usr/share/java/junit4.jar TestRunner
 
+run:
+	cd bin ; java -classpath .:/usr/share/java/junit4.jar MySegmentTree
+
 clean:
 	-rm bin/*.class
 
