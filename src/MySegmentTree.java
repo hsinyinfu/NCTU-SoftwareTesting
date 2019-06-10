@@ -31,11 +31,17 @@ public class MySegmentTree {
             return ans;
         }
         int leftIdx = treeIdx*2 + 1; 
+        int rightIdx = treeIdx*2 + 2;
         int mid = left + (right - left)/2;
 
         if( end <= mid )
         {
             ans = rangeSum( start, end, tree, leftIdx, left, mid );
+            return ans;
+        }
+        if( start >= mid+1 )
+        {
+            ans = rangeSum( start, end, tree, rightIdx, mid+1, right );
             return ans;
         }
         return ans;
@@ -52,5 +58,7 @@ public class MySegmentTree {
         System.out.println( rangeSum( 0, 0, tree, 0, 0, data.length-1 ) );
         System.out.println( rangeSum( 0, 1, tree, 0, 0, data.length-1 ) );
         System.out.println( rangeSum( 0, 3, tree, 0, 0, data.length-1 ) );
+        System.out.println( rangeSum( 2, 3, tree, 0, 0, data.length-1 ) );
+        System.out.println( rangeSum( 3, 3, tree, 0, 0, data.length-1 ) );
     }
 }

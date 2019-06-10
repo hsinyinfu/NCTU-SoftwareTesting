@@ -55,6 +55,14 @@ public class TestMySegmentTree {
         int result = MySegmentTree.rangeSum( 0, 1, tree, 0, 0, 3 );
         assertEquals( ans, result );
     }
+    @Test
+    public void testRangeSum4() {
+        //int[] data = { 1, 2, 3, 4};
+        int[] tree = { 10, 3, 7, 1, 2, 3, 4 };
+        int ans = 3+4 ;
+        int result = MySegmentTree.rangeSum( 2, 3, tree, 0, 0, 3 );
+        assertEquals( ans, result );
+    }
 
 }
 
