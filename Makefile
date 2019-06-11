@@ -20,7 +20,6 @@ runCov:
  
 calCov:
 	cd bin ; java -jar ../lib/jacococli.jar report jacoco.exec --classfiles ../bin \
-	--sourcefiles ../src --sourcefiles ../testcase --html reportDir
-
+	--sourcefiles ../src --sourcefiles ../testcase --xml ../jacoco.xml --html reportDir
 clean:
-	-rm -r bin/*.class bin/*.exec bin/reportDir 2> /dev/null || true
+	-rm -r bin/*.class bin/*.exec jacoco.xml bin/reportDir 2> /dev/null || true
