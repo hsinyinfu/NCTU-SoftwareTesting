@@ -22,8 +22,12 @@ public class MySegmentTree {
         tree[idx] = tree[ leftInd ] + tree[ rightInd ];
         return tree;
     }
-    public static int rangeSum( int start, int end, int[] tree, int treeIdx, int left, int right )
+    public static int rangeSum( int start, int end, int[] tree, int treeIdx, int left, int right ) throws IllegalArgumentException
     {
+        if( start < left || end < left || start > right || end > right )
+        {
+            throw new IllegalArgumentException("Index is illegal");
+        }
         int ans = 0;
         if( left == start && right == end )
         {
@@ -49,7 +53,7 @@ public class MySegmentTree {
         return ans;
     }
     public static void main(String[] args) {
-        int[] data = { 1, 2, 3, 4 };
+        int[] data = { 1, 2, 3 };
         int[] tree = new int[ data.length*4 ];
         tree = buildTree( 0, 0, data.length-1, data, tree );
         System.out.print("Data: ");
