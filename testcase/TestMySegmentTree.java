@@ -11,6 +11,10 @@ public class TestMySegmentTree {
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
+	/* ************************
+	 * Unittest for buildTree()
+	 * ************************/
+
 	// Predicate coverage for buildTree(): True
     @Test
     public void testBuildTree1() {
@@ -39,6 +43,9 @@ public class TestMySegmentTree {
         assertArrayEquals( ans, tree );
     }
 
+	/* ************************
+	 * Unittest for rangeSum()
+	 * ************************/
     @Test
     public void testRangeSum1() throws Exception{
         int[] tree = { 1 };
@@ -86,5 +93,52 @@ public class TestMySegmentTree {
         int result = MySegmentTree.rangeSum( 0, 4, tree, 0, 0, 3 );
     }
 
+	/* ************************
+	 * Predicate Coverage for rangeSum()
+	 * @a = if( start < left || end < left || start > right || end > right )
+	 * @b = if( left == start && right == end )
+	 * @c = if( end <= mid )
+	 * @d = if( start >= mid+1 )
+	 * ************************/
+	// a = T, b = F, c = F, d = F
+	@Test
+    public void preCovRangeSum1() throws Exception{
+        thrown.expect( IllegalArgumentException.class );
+        //int[] data = { 1, 2, 3, 4};
+        int[] tree = { 10, 3, 7, 1, 2, 3, 4 };
+        int result = MySegmentTree.rangeSum( -1, 4, tree, 0, 0, 3 );
+    }
+	// a = F, b = T, c = T, d = F
+    @Test
+    public void preCovRangeSum2() throws Exception{
+        //int[] data = { 1, 2, 3, 4};
+        int[] tree = { 10, 3, 7, 1, 2, 3, 4 };
+        int ans = 2+3+4 ;
+        int result = MySegmentTree.rangeSum( 1, 3, tree, 0, 0, 3 );
+        assertEquals( ans, result );
+    }
+	// a = F, b = T, c = F, d = T
+    @Test
+    public void preCovRangeSum3() throws Exception{
+        //int[] data = { 1, 2, 3, 4};
+        int[] tree = { 10, 3, 7, 1, 2, 3, 4 };
+        int ans = 1+2+3 ;
+        int result = MySegmentTree.rangeSum( 0, 2, tree, 0, 0, 3 );
+        assertEquals( ans, result );
+    }
+
+	/* ************************
+	 * Clause Coverage for Predicate "a" in rangeSum()
+	 * @e = start < left
+	 * @f = end < left
+	 * @g = start > right
+	 * @h = end > right
+	 * ************************/
+
+	/* ************************
+	 * Clause Coverage for Predicate "b" in rangeSum()
+	 * @i = left == start
+	 * @j = right == end
+	 * ************************/
 }
 
