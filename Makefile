@@ -23,7 +23,4 @@ calCov:
 	--sourcefiles ../src --sourcefiles ../testcase --html reportDir
 
 clean:
-	-rm bin/*.class
-	-rm bin/*.exec
-	-rm -r bin/*
-
+	-rm -r bin/*.class bin/*.exec bin/reportDir 2> /dev/null || true
