@@ -1,10 +1,14 @@
 import java.util.Arrays;
 
 import org.junit.Test;
+import org.junit.*;
 import static org.junit.Assert.*;
+import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 
 public class TestMySegmentTree {
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
 
     @Test
     public void testBuildTree1() {
@@ -70,6 +74,13 @@ public class TestMySegmentTree {
         int ans = 2+3 ;
         int result = MySegmentTree.rangeSum( 1, 2, tree, 0, 0, 3 );
         assertEquals( ans, result );
+    }
+    @Test
+    public void testRangeSum6() {
+        thrown.expect( IllegalArgumentException.class );
+        //int[] data = { 1, 2, 3, 4};
+        int[] tree = { 10, 3, 7, 1, 2, 3, 4 };
+        int result = MySegmentTree.rangeSum( 0, 4, tree, 0, 0, 3 );
     }
 
 }
