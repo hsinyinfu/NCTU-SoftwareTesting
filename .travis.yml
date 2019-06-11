@@ -11,4 +11,8 @@ addons:
 script:
   - make clean
   - make all
-  - make test
+  - make runCov
+  - make calCov
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)

@@ -6,7 +6,7 @@ compile:
 
 compileTest:
 	mkdir -p bin
-	javac -classpath /usr/share/java/junit4.jar src/MySegmentTree.java testcase/TestMySegmentTree.java testcase/TestRunner.java -d bin
+	javac -classpath /usr/share/java/junit4.jar:./bin testcase/TestMySegmentTree.java testcase/TestRunner.java -d bin
 
 test:
 	cd bin ; java -classpath .:/usr/share/java/junit4.jar TestRunner
@@ -14,6 +14,16 @@ test:
 run:
 	cd bin ; java -classpath .:/usr/share/java/junit4.jar MySegmentTree
 
+runCov:
+	rm bin/*.exec 2> /dev/null || true
+	cd bin ; java -javaagent:../lib/jacocoagent.jar -cp .:/usr/share/java/junit4.jar:/usr/share/java/mockito-core.jar TestRunner
+ 
+calCov:
+	cd bin ; java -jar ../lib/jacococli.jar report jacoco.exec --classfiles ../bin \
+	--sourcefiles ../src --sourcefiles ../testcase --html reportDir
+
 clean:
 	-rm bin/*.class
+	-rm bin/*.exec
+	-rm -r bin/*
 
