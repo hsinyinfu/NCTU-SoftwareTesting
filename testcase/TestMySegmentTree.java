@@ -129,16 +129,54 @@ public class TestMySegmentTree {
 
 	/* ************************
 	 * Clause Coverage for Predicate "a" in rangeSum()
-	 * @e = start < left
-	 * @f = end < left
-	 * @g = start > right
-	 * @h = end > right
+	 * @e = (start < left)
+	 * @f = (end < left)
+	 * @g = (start > right)
+	 * @h = (end > right)
 	 * ************************/
+
+	// e = T, f = T, g = F, h = F
+	@Test
+    public void clauCovRangeSum1() throws Exception{
+        thrown.expect( IllegalArgumentException.class );
+        //int[] data = { 1, 2, 3, 4};
+        int[] tree = { 10, 3, 7, 1, 2, 3, 4 };
+        int result = MySegmentTree.rangeSum( -2, -1, tree, 0, 0, 3 );
+    }
+
+	// e = F, f = F, g = T, h = T
+	@Test
+    public void clauCovRangeSum2() throws Exception{
+        thrown.expect( IllegalArgumentException.class );
+        //int[] data = { 1, 2, 3, 4};
+        int[] tree = { 10, 3, 7, 1, 2, 3, 4 };
+        int result = MySegmentTree.rangeSum( 4, 5, tree, 0, 0, 3 );
+    }
 
 	/* ************************
 	 * Clause Coverage for Predicate "b" in rangeSum()
-	 * @i = left == start
-	 * @j = right == end
+	 * @i = (left == start)
+	 * @j = (right == end)
 	 * ************************/
+
+	// i = T, j = T
+    @Test
+    public void clauCovRangeSum3() throws Exception{
+        //int[] data = { 1, 2, 3, 4};
+        int[] tree = { 10, 3, 7, 1, 2, 3, 4 };
+        int ans = 1+2+3+4 ;
+        int result = MySegmentTree.rangeSum( 0, 3, tree, 0, 0, 3 );
+        assertEquals( ans, result );
+    }
+
+	// i = F, j = F
+	@Test
+    public void clauCovRangeSum4() throws Exception{
+        //int[] data = { 1, 2, 3, 4};
+        int[] tree = { 10, 3, 7, 1, 2, 3, 4 };
+        int ans = 2+3 ;
+        int result = MySegmentTree.rangeSum( 1, 2, tree, 0, 0, 3 );
+        assertEquals( ans, result );
+    }
 }
 
