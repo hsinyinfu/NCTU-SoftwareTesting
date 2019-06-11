@@ -61,15 +61,19 @@ public class MySegmentTree {
         System.out.print("\nTree: ");
         showArray( tree );
         System.out.print("\n");
-        System.out.println( rangeSum( 0, 0, tree, 0, 0, data.length-1 ) );
-        System.out.println( rangeSum( 0, 1, tree, 0, 0, data.length-1 ) );
-        System.out.println( rangeSum( 0, 2, tree, 0, 0, data.length-1 ) );
-        System.out.println( rangeSum( 0, 3, tree, 0, 0, data.length-1 ) );
-        System.out.println( rangeSum( 1, 1, tree, 0, 0, data.length-1 ) );
-        System.out.println( rangeSum( 1, 2, tree, 0, 0, data.length-1 ) );
-        System.out.println( rangeSum( 1, 3, tree, 0, 0, data.length-1 ) );
-        System.out.println( rangeSum( 2, 2, tree, 0, 0, data.length-1 ) );
-        System.out.println( rangeSum( 2, 3, tree, 0, 0, data.length-1 ) );
-        System.out.println( rangeSum( 3, 3, tree, 0, 0, data.length-1 ) );
+		try{
+        	System.out.println( rangeSum( 0, 0, tree, 0, 0, data.length-1 ) );
+        	System.out.println( rangeSum( 0, 1, tree, 0, 0, data.length-1 ) );
+        	System.out.println( rangeSum( 0, 2, tree, 0, 0, data.length-1 ) );
+        	System.out.println( rangeSum( 0, 3, tree, 0, 0, data.length-1 ) );
+        	System.out.println( rangeSum( 1, 1, tree, 0, 0, data.length-1 ) );
+        	System.out.println( rangeSum( 1, 2, tree, 0, 0, data.length-1 ) );
+        	System.out.println( rangeSum( 1, 3, tree, 0, 0, data.length-1 ) );
+        	System.out.println( rangeSum( 2, 2, tree, 0, 0, data.length-1 ) );
+        	System.out.println( rangeSum( 2, 3, tree, 0, 0, data.length-1 ) );
+        	System.out.println( rangeSum( 3, 3, tree, 0, 0, data.length-1 ) );
+		} catch (IllegalArgumentException e1){
+			System.out.println( "Illegal Arguments for rangeSum()\n" );
+		}
     }
 }

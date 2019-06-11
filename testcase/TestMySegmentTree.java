@@ -7,9 +7,11 @@ import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 
 public class TestMySegmentTree {
+
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
+	// Predicate coverage for buildTree(): True
     @Test
     public void testBuildTree1() {
         int[] data = { 1 };
@@ -19,6 +21,7 @@ public class TestMySegmentTree {
         assertArrayEquals( ans, tree );
     }
 
+	// Predicate coverage for buildTree(): False
     @Test
     public void testBuildTree2() {
         int[] data = { 1, 2 };
@@ -37,14 +40,14 @@ public class TestMySegmentTree {
     }
 
     @Test
-    public void testRangeSum1() {
+    public void testRangeSum1() throws Exception{
         int[] tree = { 1 };
         int ans = 1 ;
         int result = MySegmentTree.rangeSum( 0, 0, tree, 0, 0, 0 );
         assertEquals( ans, result );
     }
     @Test
-    public void testRangeSum2() {
+    public void testRangeSum2() throws Exception{
         //int[] data = { 1, 2, 3, 4};
         int[] tree = { 10, 3, 7, 1, 2, 3, 4 };
         int ans = 10 ;
@@ -52,7 +55,7 @@ public class TestMySegmentTree {
         assertEquals( ans, result );
     }
     @Test
-    public void testRangeSum3() {
+    public void testRangeSum3() throws Exception{
         //int[] data = { 1, 2, 3, 4};
         int[] tree = { 10, 3, 7, 1, 2, 3, 4 };
         int ans = 1+2 ;
@@ -60,7 +63,7 @@ public class TestMySegmentTree {
         assertEquals( ans, result );
     }
     @Test
-    public void testRangeSum4() {
+    public void testRangeSum4() throws Exception{
         //int[] data = { 1, 2, 3, 4};
         int[] tree = { 10, 3, 7, 1, 2, 3, 4 };
         int ans = 3+4 ;
@@ -68,15 +71,15 @@ public class TestMySegmentTree {
         assertEquals( ans, result );
     }
     @Test
-    public void testRangeSum5() {
+    public void testRangeSum5() throws Exception{
         //int[] data = { 1, 2, 3, 4};
         int[] tree = { 10, 3, 7, 1, 2, 3, 4 };
         int ans = 2+3 ;
         int result = MySegmentTree.rangeSum( 1, 2, tree, 0, 0, 3 );
         assertEquals( ans, result );
     }
-    @Test
-    public void testRangeSum6() {
+	@Test
+    public void testRangeSum6() throws Exception{
         thrown.expect( IllegalArgumentException.class );
         //int[] data = { 1, 2, 3, 4};
         int[] tree = { 10, 3, 7, 1, 2, 3, 4 };

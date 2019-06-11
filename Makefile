@@ -2,7 +2,7 @@ all: compile compileTest
 
 compile:
 	mkdir -p bin
-	javac src/MySegmentTree.java -d bin
+	javac src/MySegmentTree.java src/IllegalArgumentException.java -d bin
 
 compileTest:
 	mkdir -p bin
