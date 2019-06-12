@@ -155,6 +155,7 @@ public class TestMySegmentTree {
 
 	/* ************************
 	 * Clause Coverage for Predicate "b" in rangeSum()
+	 * @b = if( left == start && right == end )
 	 * @i = (left == start)
 	 * @j = (right == end)
 	 * ************************/
@@ -176,6 +177,95 @@ public class TestMySegmentTree {
         int[] tree = { 10, 3, 7, 1, 2, 3, 4 };
         int ans = 2+3 ;
         int result = MySegmentTree.rangeSum( 1, 2, tree, 0, 0, 3 );
+        assertEquals( ans, result );
+    }
+
+	/* ************************
+	 * Correlated Action Clause Coverage (CACC) for Predicate "a" in rangeSum()
+	 * @a = if( start < left || end < left || start > right || end > right )
+	 * @e = (start < left)
+	 * @f = (end < left)
+	 * @g = (start > right)
+	 * @h = (end > right)
+	 * ************************/
+
+	// Major clause: e
+	// e = T, f = g = h = F  =>  a = T
+	@Test
+    public void corActClauCovRangeSum1() throws Exception{
+        thrown.expect( IllegalArgumentException.class );
+        //int[] data = { 1, 2, 3, 4};
+        int[] tree = { 10, 3, 7, 1, 2, 3, 4 };
+        int result = MySegmentTree.rangeSum( -2, 2, tree, 0, 0, 3 );
+    }
+
+	// Major clause: f
+	// f = T, e = g = h = F  =>  a = T
+	@Test
+    public void corActClauCovRangeSum2() throws Exception{
+        thrown.expect( IllegalArgumentException.class );
+        //int[] data = { 1, 2, 3, 4};
+        int[] tree = { 10, 3, 7, 1, 2, 3, 4 };
+        int result = MySegmentTree.rangeSum( 2, -2, tree, 0, 0, 3 );
+    }
+
+	// Major clause: g
+	// g = T, e = f = h = F  =>  a = T
+	@Test
+    public void corActClauCovRangeSum3() throws Exception{
+        thrown.expect( IllegalArgumentException.class );
+        //int[] data = { 1, 2, 3, 4};
+        int[] tree = { 10, 3, 7, 1, 2, 3, 4 };
+        int result = MySegmentTree.rangeSum( 4, 2, tree, 0, 0, 3 );
+    }
+
+	// Major clause: h
+	// h = T, e = f = g = F  =>  a = T
+	@Test
+    public void corActClauCovRangeSum4() throws Exception{
+        thrown.expect( IllegalArgumentException.class );
+        //int[] data = { 1, 2, 3, 4};
+        int[] tree = { 10, 3, 7, 1, 2, 3, 4 };
+        int result = MySegmentTree.rangeSum( 1, 4, tree, 0, 0, 3 );
+    }
+
+	// e = f = g = h = F  =>  a = F
+	@Test
+    public void corActClauCovRangeSum5() throws Exception{
+        //int[] data = { 1, 2, 3, 4};
+		int ans = 1+2+3;
+        int[] tree = { 10, 3, 7, 1, 2, 3, 4 };
+        int result = MySegmentTree.rangeSum( 0, 2, tree, 0, 0, 3 );
+    }
+
+	/* ************************
+	 * Correlated Active Clause Coverage (CACC) for Predicate "b" in rangeSum()
+	 * @b = if( left == start && right == end )
+	 * @i = (left == start)
+	 * @j = (right == end)
+	 * ************************/
+
+	// Major clause: i
+	// i = F, j = T  =>  b = F
+	// i = T, j = T is tested in the predicate coverage
+    @Test
+    public void corActClauCovRangeSum6() throws Exception{
+        //int[] data = { 1, 2, 3, 4};
+        int[] tree = { 10, 3, 7, 1, 2, 3, 4 };
+        int ans = 3+4 ;
+        int result = MySegmentTree.rangeSum( 2, 3, tree, 0, 0, 3 );
+        assertEquals( ans, result );
+    }
+
+	// Major clause: j
+	// j = F, i = T  =>  b = F
+	// j = T, i = T is tested in the predicate coverage
+    @Test
+    public void corActClauCovRangeSum7() throws Exception{
+        //int[] data = { 1, 2, 3, 4};
+        int[] tree = { 10, 3, 7, 1, 2, 3, 4 };
+        int ans = 1+2 ;
+        int result = MySegmentTree.rangeSum( 0, 1, tree, 0, 0, 3 );
         assertEquals( ans, result );
     }
 }
